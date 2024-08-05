@@ -11,17 +11,17 @@ def send_post_request(url, payload, headers):
         print(f"Error sending POST request: {e}")
 
 def main():
-    base_url = "http://beta.creative.thm"
+    base_url = "http://<IP>"
     headers = {
-        "Host": "beta.creative.thm",
+        "Host": "<IP>",
         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0",
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
         "Accept-Language": "en-US,en;q=0.5",
         "Accept-Encoding": "gzip, deflate, br",
         "Content-Type": "application/x-www-form-urlencoded",
-        "Origin": "http://beta.creative.thm",
+        "Origin": "http://<IP>",
         "Connection": "close",
-        "Referer": "http://beta.creative.thm/",
+        "Referer": "http://<IP>/",
         "Upgrade-Insecure-Requests": "1"
     }
 
