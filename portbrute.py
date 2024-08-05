@@ -1,3 +1,15 @@
+import requests
+from concurrent.futures import ThreadPoolExecutor
+
+def send_post_request(url, payload, headers):
+    try:
+        response = requests.post(url, data=payload, headers=headers)
+        content_length = response.headers.get('Content-Length')
+        if content_length != '13':  # Check if content length isn't 13
+            print(f"POST request to {url} with payload {payload} returned status code: {response.status_code}, content length: {content_length}")
+    except requests.exceptions.RequestException as e:
+        print(f"Error sending POST request: {e}")
+
 def main():
     base_url = "http://beta.creative.thm"
     headers = {
