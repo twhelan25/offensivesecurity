@@ -25,7 +25,7 @@ def fuzz_endpoint(wordlist):
           response = s.recv(1024).decode().strip()
 
           # Logic to catch valid response
-          if response != "" and "is not defined" not in response:
+          if response != "" and "is not defined" not in response and "leading zeros" not in response:
             print(f"Response {response}") 
 
 except FileNotFoundError:
