@@ -1,17 +1,16 @@
 import socket
-import sys
+import os
 
-# Check if IP address is provided as argument
-if len(sys.argv) < 2:
-    print("Please provide the IP address as an argument")
-    sys.exit(1)
+# Get the IP address from the environment variable
+host = os.environ.get('ip')
+if not host:
+    print("Error: Environment variable 'ip' is not set")
+    exit(1)
 
-host = sys.argv[1]  # Get the IP address from command line argument
 port = 8000
 
 wordlist = "/usr/share/wordlists/dirb/common.txt"
 
-# Rest of your script remains the same
 def fuzz_endpoint(wordlist):
     try:
         with open(wordlist, 'r') as file:
@@ -25,7 +24,9 @@ def fuzz_endpoint(wordlist):
                         print(f"Response {response}")
     except FileNotFoundError:
         print(f"File doesn't exist")
-    except Exception as e:
-        print(f"Error has occurred: {e}")
+    except socket.gaierror:
+        print(f"Address-related error connecting to server: {host}")
+    except socket.error as e:
+        print(f"Connection error: {e}")
 
 fuzz_endpoint(wordlist)
