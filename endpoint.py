@@ -1,5 +1,5 @@
 import socket
-
+import os
 host = '$ip'
 port = 8000
 
@@ -9,7 +9,7 @@ wordlist = "/usr/share/wordlists/dirb/common.txt"
 def fuzz_endpoint(wordlist):
   try:
     # Open wordlist
-    with open(wordlist 'r') as file:
+    with open(wordlist, 'r') as file:
       for line in file:
         # Clean up new lines
         command = line.strip()
