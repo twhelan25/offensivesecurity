@@ -1,34 +1,28 @@
 import socket
-import os
+import sys
 
-host = '$ip'
+# Check if IP address is provided as argument
+if len(sys.argv) < 2:
+    print("Please provide the IP address as an argument")
+    sys.exit(1)
+
+host = sys.argv[1]  # Get the IP address from command line argument
 port = 8000
 
 wordlist = "/usr/share/wordlists/dirb/common.txt"
 
-# set up request to endpoint
+# Rest of your script remains the same
 def fuzz_endpoint(wordlist):
     try:
-        # Open wordlist
         with open(wordlist, 'r') as file:
             for line in file:
-                # Clean up new lines
                 command = line.strip()
-
-                # Establish connection to the server
                 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     s.connect((host, port))
-
-                    # Send fuzzing to target
                     s.sendall(command.encode() + b'\n')
-
-                    # Receive the response
                     response = s.recv(1024).decode().strip()
-
-                    # Logic to catch valid response
                     if response != "" and "is not defined" not in response and "leading zeros" not in response:
                         print(f"Response {response}")
-
     except FileNotFoundError:
         print(f"File doesn't exist")
     except Exception as e:
