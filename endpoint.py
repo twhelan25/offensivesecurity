@@ -27,11 +27,11 @@ def fuzz_endpoint(wordlist):
 
                     # Logic to catch valid response
                     if response != "" and "is not defined" not in response and "leading zeros" not in response:
-                        print(f"Response {response}") 
+                        print(f"Response {response}")
 
     except FileNotFoundError:
         print(f"File doesn't exist")
     except Exception as e:
-        print(f"Error has occurred {e}")
+        print(f"Error has occurred: {e}")
 
 fuzz_endpoint(wordlist)
