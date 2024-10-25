@@ -1,4 +1,5 @@
 import socket
+import os
 from termcolor import colored  # Requires `pip install termcolor`
 
 host = '$ip'
