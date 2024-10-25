@@ -2,7 +2,7 @@ import socket
 import os
 from termcolor import colored  # Requires `pip install termcolor`
 
-host = '$ip'
+host = os.getenv('ip', '127.0.0.1')  # Default to '127.0.0.1' if 'ip' is not set
 port = 8000
 wordlist = "/usr/share/wordlists/dirb/common.txt"
 
