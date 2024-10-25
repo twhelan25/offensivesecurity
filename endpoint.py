@@ -33,5 +33,6 @@ except FileNotFoundError:
 except Exception as e:
   print(f"Error has occured {e}")
 
+fuzz_endpoint(wordlist)
 
         
