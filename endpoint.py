@@ -29,6 +29,7 @@ def fuzz_endpoint(wordlist):
                         response = s.recv(1024).decode().strip()
                         if response != "" and "is not defined" not in response and "leading zeros" not in response:
                             print(f"Response: {response}")
+                            print(f"Command {command}")
                 except socket.timeout:
                     print(f"Connection to {host}:{port} timed out")
                 except socket.error as e:
